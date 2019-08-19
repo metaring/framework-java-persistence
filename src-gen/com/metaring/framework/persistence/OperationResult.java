@@ -66,6 +66,34 @@ public class OperationResult implements GeneratedCoreType {
         return operationResult;
     }
 
+    public static OperationResult fromObject(Object object) {
+
+        if(object == null) {
+            return null;
+        }
+
+        DataRepresentation dataRepresentation = Tools.FACTORY_DATA_REPRESENTATION.fromObject(object);
+
+        Long manipulationNumber = null;
+        if(dataRepresentation.hasProperty("manipulationNumber")) {
+            try {
+                manipulationNumber = dataRepresentation.getDigit("manipulationNumber");
+            } catch (Exception e) {
+            }
+        }
+
+        TextSeries keys = null;
+        if(dataRepresentation.hasProperty("keys")) {
+            try {
+                keys = dataRepresentation.getTextSeries("keys");
+            } catch (Exception e) {
+            }
+        }
+
+        OperationResult operationResult = create(manipulationNumber, keys);
+        return operationResult;
+    }
+
     public DataRepresentation toDataRepresentation() {
         DataRepresentation dataRepresentation = Tools.FACTORY_DATA_REPRESENTATION.create();
         if (manipulationNumber != null) {

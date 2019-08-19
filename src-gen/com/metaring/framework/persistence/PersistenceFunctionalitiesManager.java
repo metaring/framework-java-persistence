@@ -11,9 +11,9 @@ import com.metaring.framework.persistence.OperationResult;
 
 public class PersistenceFunctionalitiesManager extends FunctionalitiesManager implements GeneratedFunctionalitiesManager {
 
-    public static final FunctionalityInfo QUERY = FunctionalityInfo.create("com.metaring.framework.persistence.query", true, false, false, "java.lang.String", "com.metaring.framework.type.DataRepresentation");
+    public static final FunctionalityInfo QUERY = QueryFunctionality.INFO;
 
-    public static final FunctionalityInfo UPDATE = FunctionalityInfo.create("com.metaring.framework.persistence.update", true, false, false, "java.lang.String", "com.metaring.framework.persistence.OperationResult");
+    public static final FunctionalityInfo UPDATE = UpdateFunctionality.INFO;
 
     public static final CompletableFuture<DataRepresentation> query(String string) {
         return call(QUERY, QueryFunctionality.class, getCallingFunctionality(), string, result -> result);
